@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Food Options',  'My Rating', 'Google Reviews'],
+          ['Honey Truck', 5,         4.6],
+          ['Temple Teppanyaki ',     4.1,         4.9],
+          ['The Crepe Truck Philly',        3.5,         4.7],
+          ['Korea House',        4.6,         4.1],
+          ['Cha Cha',        2.0,         3.4],
+          ['Nanus Hot Chicken',        2.9,         4.9],
+          ['Richies Sandwhich Shop',        4.0,         4.2],
+          ['Orient Express',        3.7,         3.5],
+          ['Tais Vietnamese Food',        5.0,         4.0],
+          ['Hanks',        4.8,         4.5]
+        ]);
+
+       
+        var options = {
+            title: 'Comparing My Ranking of Temple Food Options to Google Reviews',
+            vAxis: {title: 'Accumulated Rating (each ranking is out of 5)'},
+            backgroundColor: '#F0F0F0',
+            legend: { position: 'right' },
+            connectSteps: false,
+            colors: ['#6CB6B2', '#F59AC5'],
+            isStacked: true,
+  };
+
+      
+
+        var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ["Book", "% of Enjoyment", { role: "style" } ],
+      ["The Sorcerer's Stone", 75 , "#8137EE"],
+      ["The Chamber of Secrets", 15, "#3F7D29"],
+      ["The Prisoner of Azkban", 100, "259595"],
+      ["The Goblet of Fire", 85, "#C23333"],
+      ["The Order of the Phoenix", 65, "2D57CF"],
+      ["The Half-Blood Prince", 55, "AD1D70"],
+      ["The Deathly Hallows", 90, "color: #D0810F"]
+    ]);
+
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, 1,
+                     { calc: "stringify",
+                       sourceColumn: 1,
+                       type: "string",
+                       role: "annotation" },
+                     2]);
+
+    var options = {
+      title: "Ranking all the Harry Potter Books Based on Percent of Enjoyment",
+      width: 1000,
+      height: 650,
+      bar: {groupWidth: "95%"},
+      legend: { position: "none" },
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+    chart.draw(view, options);
+}
+</script>
+<div id="columnchart_values" style="width: 1000px; height: 400px;"></div>
